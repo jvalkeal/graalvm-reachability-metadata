@@ -74,6 +74,7 @@ class MetadataLookupLogic {
                 dirs.add(defaultDir.toString())
             }
         }
+        System.out.println("DDD3 " + dirs)
         return dirs
     }
 
@@ -110,7 +111,9 @@ class MetadataLookupLogic {
      * @return list of all coordinates that
      */
     static List<String> getMatchingCoordinates(String coordinateFilter) {
+        System.out.println("DDD1 " + coordinateFilter)
         def (String groupId, String artifactId, String version) = splitCoordinates(coordinateFilter)
+        System.out.println("DDD2 " + groupId + " " + artifactId + " " + version)
 
         Set<String> matchingCoordinates = new HashSet<>()
 

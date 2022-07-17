@@ -27,7 +27,7 @@ import static org.graalvm.internal.tck.Utils.splitCoordinates
 @SuppressWarnings("unused")
 abstract class TestInvocationTask extends AbstractSubprojectTask {
 
-    static final DEFAULT_ARGS = List.of(TestUtils.repoRoot.resolve("gradlew").toString(), "nativeTest")
+    static final DEFAULT_ARGS = List.of(TestUtils.repoRoot.resolve("gradlew.bat").toString(), "nativeTest")
 
     @Input
     String coordinates

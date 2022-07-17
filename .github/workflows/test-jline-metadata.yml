@@ -1,0 +1,37 @@
+name: "Test jline metadata"
+
+on:
+  push:
+    branches:
+      - jline-tweaks-work1
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - nickname: win
+            os: windows-latest
+          # - nickname: macos
+          #   os: macos-latest
+          # - nickname: linux
+          #   os: ubuntu-latest
+    name: Test ${{ matrix.nickname }}
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+      - name: "🔧 Prepare environment"
+        uses: ./.github/actions/setup-graalvm
+        with:
+          version: 22.2.0
+          java-version: 11
+          components: 'native-image'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: "🧪 Run '${{ matrix.coordinates }}' tests"
+        run: |
+          ./gradlew test -Pcoordinates="org.jline:jline:3.21.0" --info
