@@ -38,4 +38,8 @@ class TestUtils {
         testRoot = repoRoot.resolve("tests").resolve("src")
         tckRoot = repoRoot.resolve("tests").resolve("tck-build-logic")
     }
+
+    static boolean isWindows() {
+        return System.properties['os.name'].toLowerCase().contains('windows');
+    }
 }

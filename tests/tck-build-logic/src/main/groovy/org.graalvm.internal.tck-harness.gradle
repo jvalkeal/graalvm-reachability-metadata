@@ -87,9 +87,9 @@ if (project.hasProperty("baseCommit")) {
 }
 
 def matrixDefault = [
-        "version"     : ["22.1.0"], // TODO: Add "dev" after NBT release 0.9.13
+        "version"     : ["22.2.0"], // TODO: Add "dev" after NBT release 0.9.13
         "java-version": ["11"], // TODO: Add "17"
-        "os"          : ["ubuntu-latest"] // TODO: Add support for "windows-latest", "macos-latest"
+        "os"          : ["ubuntu-latest", "macos-latest", "windows-latest"]
 ]
 
 // gradle generateMatrixMatchingCoordinates -Pcoordinates=<maven-coordinates>
