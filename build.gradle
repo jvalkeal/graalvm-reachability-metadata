@@ -26,6 +26,7 @@ project.version("0.1.0")
 
 // gradle check
 spotless {
+    lineEndings 'UNIX'
     json {
         target(metadataRoot + '/**/*.json', testRoot + '/**/*.json')
         targetExclude(testRoot + '/**/build/**/*.json', repoRoot + '/.github/**/*.json')
