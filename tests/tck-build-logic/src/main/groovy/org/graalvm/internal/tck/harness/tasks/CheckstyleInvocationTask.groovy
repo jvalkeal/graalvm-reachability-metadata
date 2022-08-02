@@ -7,6 +7,7 @@
 
 package org.graalvm.internal.tck.harness.tasks
 
+import org.graalvm.internal.tck.TestUtils
 import org.gradle.api.GradleException
 import org.gradle.api.tasks.TaskAction
 
@@ -18,7 +19,8 @@ import javax.inject.Inject
 @SuppressWarnings("unused")
 abstract class CheckstyleInvocationTask extends AbstractSubprojectTask {
 
-    static final CHECKSTYLE_COMMAND = List.of("gradle", "checkstyle")
+    // static final CHECKSTYLE_COMMAND = List.of("gradle", "checkstyle")
+    static final CHECKSTYLE_COMMAND = List.of(TestUtils.repoRoot.resolve(TestUtils.isWindows() ? "gradlew.bat" : "gradlew").toString(), "checkstyle")
 
     @Inject
     CheckstyleInvocationTask(String coordinates, List<String> cmd) {
