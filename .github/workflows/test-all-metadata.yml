@@ -56,5 +56,5 @@ jobs:
         if: ${{ failure() }}
         uses: actions/upload-artifact@v3
         with:
-          name: build-logs-${{ matrix.coordinates }}
+          name: build-logs
           path: tests/**/build/reports/
