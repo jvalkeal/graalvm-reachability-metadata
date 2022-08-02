@@ -36,6 +36,8 @@ jobs:
       fail-fast: false
       matrix: ${{fromJson(needs.get-all-metadata.outputs.matrix)}}
     steps:
+      - run: |
+          git config --global core.autocrlf false
       - name: "☁️ Checkout repository"
         uses: actions/checkout@v2
         with:
@@ -50,3 +52,9 @@ jobs:
       - name: "🧪 Run '${{ matrix.coordinates }}' tests"
         run: |
           gradle test -Pcoordinates="${{ matrix.coordinates }}"
+      - name: Upload Build Logs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-logs-${{ matrix.coordinates }}
+          path: tests/**/build/reports/

@@ -35,9 +35,9 @@ Provider<Task> checkstyle = tasks.register("checkstyle") { task ->
     task.setGroup(JavaBasePlugin.VERIFICATION_GROUP)
 }
 
-// tasks.named("check").configure {
-//     dependsOn(checkstyle)
-// }
+tasks.named("check").configure {
+    dependsOn(checkstyle)
+}
 
 // Here we want to configure all test and checkstyle tasks for all filtered subprojects
 for (String coordinates in matchingCoordinates) {
