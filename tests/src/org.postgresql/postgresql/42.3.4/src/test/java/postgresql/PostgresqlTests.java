@@ -30,12 +30,15 @@ import org.awaitility.Awaitility;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * This test uses docker to start a postgresql database to test against.
  */
+@EnabledOnOs(OS.LINUX)
 public class PostgresqlTests {
 
     private static final String USERNAME = "fred";
